@@ -1,0 +1,7 @@
+1、	cannot open git-upload-pack，cannot open git-receive-pack，Can't connect to any URI错误解决方法eclipse
+	解决eclipse中git插件中的cannot open git-upload-pack问题
+	网络上搜索到的解决方式：打开eclipse中的windows-->Preferences-->Team-->Git-->Configuration-->User Settings.然后点Add Entry新建一个键值对，输入http.sslVerify=false。
+	然而并不能解决
+	主要原因github不支持tls1.1导致egit cannot open git-upload-pack
+	JDK1.8默认支持TLSv1.2，JDK1.7默认是TLSv1.1，所以需要将eclipse中的TLSv1改为TLSv1.2
+	解决方式：打开eclipse安装目录下的eclipse.ini添加一句：-Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2
